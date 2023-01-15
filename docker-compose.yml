@@ -1,0 +1,18 @@
+version: '2'
+services:
+
+  website:
+    build: .
+    labels:
+      - 'traefik.http.routers.ai-bingo.rule=Host(`ai-bingo.lipsumar.io`)'
+      - 'traefik.http.routers.ai-bingo.tls.certresolver=le'
+      - 'traefik.http.routers.ai-bingo.entrypoints=websecure'
+      - 'traefik.docker.network=traefik-external'
+    networks:
+      - traefik-external
+
+
+networks:
+  traefik-external:
+    external: true
+  

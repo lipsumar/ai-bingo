@@ -17,7 +17,10 @@ const currentQuestion = computed(() => playStore.currentQuestion);
     >
       <div class="flex-grow mr-4">
         <div class="w-64 h-64 border rounded bg-slate-100 lg:mx-auto">
-          {{ img.image }}
+          <img
+            :src="`/images/prompts/${img.image}`"
+            class="object-scale-down"
+          />
         </div>
       </div>
       <div

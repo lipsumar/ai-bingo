@@ -9,7 +9,7 @@ playStore.init();
 </script>
 <template>
   <div class="container mx-auto my-8">
-    <div class="mb-8 max-w-[300px] mx-auto">
+    <div v-if="!playStore.isComplete" class="mb-8 max-w-[300px] mx-auto">
       <PlayProgress />
     </div>
     <PlayQuestion v-if="!playStore.isComplete" />

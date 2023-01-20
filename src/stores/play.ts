@@ -19,13 +19,27 @@ function isAnswerCorrect(answer: string[], question: Question) {
     .every((b) => b === true);
 }
 
+function isAiCorrect(
+  answer: string[],
+  question: Question,
+  ai: string
+): boolean {
+  const correctIndex = question.images.map((im) => im.ai).indexOf(ai);
+  const userIndex = answer.indexOf(ai);
+  return correctIndex === userIndex;
+}
+
 export const usePlayStore = defineStore("play", () => {
   const currentQuestion = ref<Question>({ id: "", images: [], prompt: "" });
   const questions = ref<Question[]>();
   const currentQuestionIndex = ref(0);
   const selection = ref<(string | null)[]>([null, null, null]);
   const answers = ref<string[][]>([]);
-  const score = ref(0);
+  const scorePerAi = ref<{ de: number; sd: number; mj: number }>({
+    de: 0,
+    sd: 0,
+    mj: 0,
+  });
 
   const total = computed(() => questions.value?.length || 0);
   const canContinue = computed(
@@ -43,18 +57,21 @@ export const usePlayStore = defineStore("play", () => {
     currentQuestion.value = questions.value[0];
     selection.value = [null, null, null];
     answers.value = [];
-    score.value = 0;
+    scorePerAi.value = { sd: 0, de: 0, mj: 0 };
   }
 
   function next() {
     invariant(questions.value);
     answers.value.push(selection.value as string[]);
-    score.value += isAnswerCorrect(
-      selection.value as string[],
-      currentQuestion.value
-    )
-      ? 1
-      : 0;
+    const question = currentQuestion.value;
+    const answer = selection.value as string[];
+
+    scorePerAi.value = {
+      sd: scorePerAi.value.sd + (isAiCorrect(answer, question, "sd") ? 1 : 0),
+      de: scorePerAi.value.de + (isAiCorrect(answer, question, "de") ? 1 : 0),
+      mj: scorePerAi.value.mj + (isAiCorrect(answer, question, "mj") ? 1 : 0),
+    };
+
     currentQuestionIndex.value = currentQuestionIndex.value + 1;
     currentQuestion.value = questions.value[currentQuestionIndex.value];
     selection.value = [null, null, null];
@@ -88,6 +105,7 @@ export const usePlayStore = defineStore("play", () => {
   }
 
   return {
+    questions,
     currentQuestion,
     init,
     next,
@@ -98,6 +116,6 @@ export const usePlayStore = defineStore("play", () => {
     canContinue,
     isComplete,
     answers,
-    score,
+    scorePerAi,
   };
 });

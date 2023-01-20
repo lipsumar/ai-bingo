@@ -7,11 +7,14 @@ module.exports = {
     container: {
       padding: "2rem",
     },
-    //   extend: {
-    //     fontFamily: {
-    //       sans: ["Nunito", ...defaultTheme.fontFamily.sans],
-    //     },
-    //   },
+    extend: {
+      transitionProperty: {
+        width: "width",
+      },
+      //     fontFamily: {
+      //       sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+      //     },
+    },
   },
   plugins: [],
 };

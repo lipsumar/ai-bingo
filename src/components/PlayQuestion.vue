@@ -9,14 +9,14 @@ const currentQuestion = computed(() => playStore.currentQuestion);
 </script>
 <template>
   <p class="text-center text-2xl mb-8">{{ currentQuestion.prompt }}</p>
-  <div class="lg:flex lg:gap-4 lg:justify-center">
+  <div class="lg:flex lg:space-x-4 lg:justify-center">
     <div
       v-for="(img, imgIndex) in currentQuestion.images"
       :key="img.image"
       class="flex mb-4 lg:flex-col"
     >
       <div class="flex-grow mr-4">
-        <div class="w-64 h-64 border rounded bg-slate-100 lg:mx-auto">
+        <div class="border rounded bg-slate-100 lg:mx-auto">
           <img
             :src="`/images/prompts/${img.image}`"
             class="object-scale-down"

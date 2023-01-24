@@ -11,4 +11,4 @@ jobs:
           host: ${{ secrets.LIPSUMAR_IO_HOST }}
           username: ${{ secrets.LIPSUMAR_IO_USER }}
           key: ${{ secrets.LIPSUMAR_IO_KEY }}
-          script: whoami
+          script: cd ai-bingo && git pull && docker-compose build && docker-compose up -d

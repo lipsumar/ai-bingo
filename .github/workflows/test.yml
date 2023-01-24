@@ -2,7 +2,7 @@ name: remote ssh command
 on: [push]
 jobs:
   build:
-    name: Whoami
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password

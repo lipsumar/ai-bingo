@@ -17,10 +17,10 @@ const disabled = computed(
 </script>
 <template>
   <button
-    class="px-4 py-2 bg-slate-400 text-white font-bold rounded-lg w-full lg:w-48 mb-4"
+    class="px-4 py-2 transparent w-full h-20 flex items-center justify-center flex-grow uppercase"
     :class="{
-      'bg-slate-600': selected,
-      'bg-slate-300': disabled,
+      'bg-orange-600': selected,
+      'opacity-50': disabled,
     }"
     @click="() => playStore.select(imgIndex, props.ai)"
   >

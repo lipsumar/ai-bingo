@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "GTPressura";
+  src: url("fonts/GTPressura-Bold.woff2") format("woff2"),
+    url("fonts/GTPressura-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GTPressura";
+  src: url("fonts/GTPressura.woff2") format("woff2"),
+    url("fonts/GTPressura.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GTPressura";
+  src: url("fonts/GTPressura-Light.woff2") format("woff2"),
+    url("fonts/GTPressura-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: GTPressura, system-ui, sans-serif;
+  }
+}

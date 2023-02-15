@@ -29,6 +29,13 @@ function isAiCorrect(
   return correctIndex === userIndex;
 }
 
+// https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+function randomId() {
+  return Array(7 + 1)
+    .join((Math.random().toString(36) + "00000000000000000").slice(2, 18))
+    .slice(0, 7);
+}
+
 export const usePlayStore = defineStore("play", () => {
   const currentQuestion = ref<Question>({ id: "", images: [], prompt: "" });
   const questions = ref<Question[]>();
@@ -40,6 +47,7 @@ export const usePlayStore = defineStore("play", () => {
     sd: 0,
     mj: 0,
   });
+  const gameId = ref<string>("");
 
   const total = computed(() => questions.value?.length || 0);
   const canContinue = computed(
@@ -58,6 +66,7 @@ export const usePlayStore = defineStore("play", () => {
     selection.value = [null, null, null];
     answers.value = [];
     scorePerAi.value = { sd: 0, de: 0, mj: 0 };
+    gameId.value = randomId();
   }
 
   function next() {
@@ -88,20 +97,14 @@ export const usePlayStore = defineStore("play", () => {
     }
     selection.value[index] = ai;
 
-    console.log(
-      "after",
-      selection.value,
-      selection.value.filter((a) => a === null)
-    );
-
-    if (selection.value.filter((a) => a === null).length === 1) {
-      // auto-fill last value
-      const possible = ["de", "mj", "sd"].filter(
-        (a) => !selection.value.includes(a)
-      );
-      console.log("auto set to", possible);
-      selection.value[selection.value.indexOf(null)] = possible[0];
-    }
+    // if (selection.value.filter((a) => a === null).length === 1) {
+    //   // auto-fill last value
+    //   const possible = ["de", "mj", "sd"].filter(
+    //     (a) => !selection.value.includes(a)
+    //   );
+    //   console.log("auto set to", possible);
+    //   selection.value[selection.value.indexOf(null)] = possible[0];
+    // }
   }
 
   return {
@@ -117,5 +120,6 @@ export const usePlayStore = defineStore("play", () => {
     isComplete,
     answers,
     scorePerAi,
+    gameId,
   };
 });

@@ -9,9 +9,9 @@ const progress = computed(() => {
 });
 </script>
 <template>
-  <div class="h-4 rounded-full w-full border border-sky-800 border-2">
+  <div class="h-2 w-full">
     <div
-      class="h-full bg-sky-800 w-1/2 rounded-full transition-width"
+      class="h-full bg-bingo-orange w-full transition-width"
       :style="`width:${progress}%`"
     ></div>
   </div>

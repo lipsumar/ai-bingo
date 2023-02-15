@@ -27,3 +27,5 @@ coverage
 *.sln
 *.sw?
 scripts
+ai-bingo.sketch
+ui

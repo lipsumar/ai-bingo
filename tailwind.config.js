@@ -14,6 +14,11 @@ module.exports = {
       //     fontFamily: {
       //       sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       //     },
+      colors: {
+        "bingo-black": "#1E1E1E",
+        "bingo-orange": "#C75210",
+        "bingo-white": "#F0EBEB",
+      },
     },
   },
   plugins: [],

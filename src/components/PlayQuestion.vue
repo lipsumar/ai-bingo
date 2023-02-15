@@ -29,10 +29,12 @@ function next() {
       class="flex mb-4 flex-col border rounded-br-lg rounded-bl-lg overflow-hidden max-w-[512px]"
     >
       <div class="flex-grow">
-        <div class="bg-slate-100 lg:mx-auto">
+        <div class="lg:mx-auto">
           <img
             :src="`/images/prompts/${img.image}`"
             class="object-scale-down"
+            width="512"
+            height="512"
           />
         </div>
       </div>

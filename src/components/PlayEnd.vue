@@ -5,6 +5,7 @@ import logoSrc from "@/assets/logo.svg";
 import correctSrc from "@/assets/correct.svg";
 import incorrectSrc from "@/assets/incorrect.svg";
 import { onMounted } from "vue";
+import { recordEvent } from "@/lib/events";
 
 const playStore = usePlayStore();
 type Img = { ai: string; image: string };
@@ -24,7 +25,8 @@ const overallScore = Math.ceil(
 );
 
 onMounted(() => {
-  window.gtag("event", "game_complete", {
+  recordEvent({
+    type: "game_complete",
     score: overallScore,
     score_details: playStore.scorePerAi,
     game_id: playStore.gameId,

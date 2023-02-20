@@ -17,11 +17,19 @@ const state = reactive({ play: false });
       <div class="md:w-6/12">
         <div class="p-16 relative z-10">
           <img :src="logoSrc" class="w-8/12 mb-12" />
+          <h2 class="text-3xl font-thin">
+            <span class="text-bingo-orange">DALL•E</span>
+            <span class="opacity-80"> vs </span
+            ><span class="text-bingo-orange">Midjourney</span>
+            <span class="opacity-80"> vs </span
+            ><span class="text-bingo-orange">Stable Diffusion</span>
+          </h2>
+          <h2 class="text-3xl mb-8">Can you tell which is which?</h2>
+
           <p class="text-lg mb-12">
-            Midjourney, Dalle, and Stable Diffusion walk into a prompt... but
-            can you guess which image belongs to who? A guessing game that's
-            sure to be more entertaining than watching three artists try to
-            share a canvas!
+            We gave the same prompts to DALL•E, Midjourney and Stable
+            Diffusion.<br />
+            Can you guess which is which ?
           </p>
 
           <button

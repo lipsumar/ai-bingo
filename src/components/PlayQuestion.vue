@@ -2,6 +2,7 @@
 import { usePlayStore } from "@/stores/play";
 import AnswerButton from "./AnswerButton.vue";
 import { computed } from "vue";
+import { recordEvent } from "@/lib/events";
 
 const playStore = usePlayStore();
 
@@ -12,10 +13,7 @@ function next() {
   playStore.next();
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  window.gtag("event", "game_next", {
-    from_index,
-    game_id: playStore.gameId,
-  });
+  recordEvent({ type: "game_next", from_index, game_id: playStore.gameId });
 }
 </script>
 <template>

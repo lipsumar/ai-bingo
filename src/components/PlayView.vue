@@ -4,12 +4,12 @@ import PlayProgress from "@/components/PlayProgress.vue";
 import PlayQuestion from "@/components/PlayQuestion.vue";
 import { usePlayStore } from "@/stores/play";
 import logoSrc from "@/assets/logo.svg";
+import { recordEvent } from "@/lib/events";
 
 const playStore = usePlayStore();
 playStore.init();
-window.gtag("event", "game_new", {
-  game_id: playStore.gameId,
-});
+
+recordEvent({ type: "game_new", game_id: playStore.gameId });
 </script>
 <template>
   <PlayProgress v-if="!playStore.isComplete" />

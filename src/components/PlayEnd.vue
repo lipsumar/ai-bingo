@@ -110,6 +110,9 @@ const filterIncorrect =
               v-for="(img) in sortImages(question.images, playStore.answers[qi] as string[])"
               :key="img.image"
             >
+              <div class="md:hidden uppercase text-white text-lg font-bold">
+                {{ aiToLabel[img.ai] }}
+              </div>
               <div class="relative rounded-lg overflow-hidden">
                 <img
                   :src="`/images/prompts/${img.image}`"
@@ -122,9 +125,11 @@ const filterIncorrect =
                     img.answer === img.ai ? filterCorrect : filterIncorrect
                   "
                 ></div>
-                <div class="absolute top-0 right-0 bottom-0 left-0">
+                <div
+                  class="absolute top-0 right-0 bottom-0 left-0 flex items-center md:block"
+                >
                   <div
-                    class="px-4 py-2 uppercase text-white text-lg font-bold"
+                    class="px-4 py-2 uppercase text-white text-lg font-bold hidden md:block"
                     style="text-shadow: 0 0 4px rgba(0, 0, 0, 0.5)"
                   >
                     {{ aiToLabel[img.ai] }}
@@ -132,20 +137,29 @@ const filterIncorrect =
                   <img
                     :src="correctSrc"
                     v-if="img.answer === img.ai"
-                    class="w-1/3 m-auto xl:visible invisible"
+                    class="w-1/3 m-auto xl:visible lg:invisible md:visible sm:visible visible"
                   />
                   <img
                     :src="incorrectSrc"
                     v-else
-                    class="w-1/2 m-auto xl:visible invisible"
+                    class="w-1/2 m-auto xl:visible lg:invisible md:visible sm:visible visible"
                   />
                   <div
                     :style="`text-shadow: 0 0 3px rgba(0, 0, 0, 0.6)`"
-                    class="absolute bottom-0 left-0 p-4 text-white"
+                    class="absolute bottom-0 left-0 p-4 text-white hidden md:block"
                   >
                     You answered {{ aiToLabel[img.answer].toUpperCase() }}
                   </div>
                 </div>
+              </div>
+              <div
+                class="md:hidden"
+                :class="{
+                  'text-green-600': img.answer === img.ai,
+                  'text-red-600': img.answer !== img.ai,
+                }"
+              >
+                You answered {{ aiToLabel[img.answer].toUpperCase() }}
               </div>
             </div>
           </div>

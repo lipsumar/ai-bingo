@@ -17,12 +17,14 @@ const state = reactive({ play: false });
       <div class="md:w-6/12">
         <div class="p-16 relative z-10">
           <img :src="logoSrc" class="w-8/12 mb-12" />
-          <h2 class="text-3xl font-thin">
+          <h2 class="text-3xl font-thin mb-4">
             <span class="text-bingo-orange">DALL•E</span>
-            <span class="opacity-80"> vs </span
-            ><span class="text-bingo-orange">Midjourney</span>
-            <span class="opacity-80"> vs </span
-            ><span class="text-bingo-orange">Stable Diffusion</span>
+            <span class=""> vs </span><br /><span class="text-bingo-orange"
+              >Midjourney</span
+            >
+            <span class=""> vs </span><br /><span class="text-bingo-orange"
+              >Stable Diffusion</span
+            >
           </h2>
           <h2 class="text-3xl mb-8">Can you tell which is which?</h2>
 

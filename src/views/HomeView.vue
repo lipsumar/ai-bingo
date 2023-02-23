@@ -15,23 +15,20 @@ const state = reactive({ play: false });
     />
     <main class="h-screen md:flex">
       <div class="md:w-6/12">
-        <div class="p-16 relative z-10">
+        <div class="p-16 relative z-10 xl:mr-32">
           <img :src="logoSrc" class="w-8/12 mb-12" />
-          <h2 class="text-3xl font-thin mb-4">
-            <span class="text-bingo-orange">DALL•E</span>
-            <span class=""> vs </span><br /><span class="text-bingo-orange"
-              >Midjourney</span
-            >
-            <span class=""> vs </span><br /><span class="text-bingo-orange"
-              >Stable Diffusion</span
-            >
+          <h2 class="text-3xl font-thin mb-8">
+            A <span class="text-bingo-orange">DALL•E</span>,
+            <span class="text-bingo-orange">Midjourney</span> and
+            <span class="text-bingo-orange">Stable Diffusion</span> guessing
+            game
           </h2>
-          <h2 class="text-3xl mb-8">Can you tell which is which?</h2>
 
-          <p class="text-lg mb-12">
-            We gave the same prompts to DALL•E, Midjourney and Stable
-            Diffusion.<br />
-            Can you guess which is which ?
+          <p class="text-2xl font-thin mb-16">
+            Midjourney, Dalle and Stable Diffusion, walk into a prompt...
+            <span class="font-bold">Can you guess which is which ?</span><br />
+            A game that's sure to be more entertaining than watching three
+            artists try to share a canvas!
           </p>
 
           <button
@@ -40,6 +37,17 @@ const state = reactive({ play: false });
           >
             Play now ⟶
           </button>
+
+          <footer class="mt-14 text-lg opacity-80">
+            AI BINGO. A human generated guess game by
+            <a href="https://twitter.com/lipsumar" class="underline"
+              >@lipsumar</a
+            >
+            and
+            <a href="https://instagram.com/paulmarique" class="underline"
+              >@paulmarique</a
+            >
+          </footer>
         </div>
       </div>
       <div class="w-full md:w-6/12 md:h-full h-96 bg-bingo-orange">
